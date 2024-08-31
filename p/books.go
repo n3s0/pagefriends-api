@@ -12,6 +12,9 @@ type Book struct {
 	Author string `json:"author"`
 }
 
+/*
+Data intended for testing outside of a database.
+*/
 var books = []Book{
 	{ID: "1", Title: "Mistborn", Author: "Brandon Sanderson"},
 	{ID: "2", Title: "Iron Flame", Author: "Rebecca Yarros"},
