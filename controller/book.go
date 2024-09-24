@@ -1,4 +1,4 @@
-package p
+package controller
 
 import (
 	"errors"
@@ -9,10 +9,16 @@ import (
 	"gorm.io/gorm"
 )
 
+type Book struct {
+	ID     string `json:"id"`
+	Title  string `json:"first_name"`
+	Author string `json:"author_name"`
+}
+
 func CreateBook(c *gin.Context) {
 	var book Book
 	c.BindJSON(&book)
-	err := DbCreateBook(&book)
+	err := CreateBook(&book)
 	if err != nil {
 		c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err})
 		return
@@ -22,7 +28,7 @@ func CreateBook(c *gin.Context) {
 
 func GetBooks(c *gin.Context) {
 	var books []Book
-	err := DbGetBooks(&books)
+	err := DbGetBooks(db, &books)
 	if err != nil {
 		c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err})
 		return

@@ -1,7 +1,7 @@
 package main
 
-import "github.com/n3s0/pagefriends-api/p"
+import "github.com/n3s0/pagefriends-api/cmd"
 
 func main() {
-	p.Execute()
+	cmd.Execute()
 }
